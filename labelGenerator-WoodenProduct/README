@@ -1,0 +1,102 @@
+LABEL GENERATOR - WOODEN PRODUCT
+
+This program was created to simplify the process of creating product
+pricing labels.  With a CSV file containing information to be printed
+out on the labels, the program is able to extract product detail and
+create a PDF document according to user's needs.
+
+
+###################
+# Getting started #
+###################
+
+If working on a Windows PC, you must first download Cygwin in order to
+be able to run the program in Linux enviroment. Once Cygwin is up and
+running, make sure you have Python 3 installed with the following
+modules:
+- reportlab
+
+Once all above features are installed, go ahead and download all the
+files included in this repository. Once you have everything saved,
+navigate inside the folder containing all the downloaded files via the
+command line interface.
+
+
+
+###########
+# Testing #
+###########
+
+You have downloaded some sample data needed to run the program, to
+check if the progam is functioning properly, run the following command
+inside your directory containing all the files:
+
+./makelabels.py sampledata.csv
+And enter the following when prompted:
+>>>Filter by: RED-OAK
+
+The expected outcome of this command is a new PDF file inside your
+directory titled RED-OAK.pdf containing labels which should look the
+same as the sample PDF file.
+
+
+##############
+# Deployment #
+##############
+
+- LOGO
+In order for the labels to contain your logo, replace the
+"logo.png" file in the repository with your own PNG file with the same
+name. Optimal image size is 352x97 pixels.
+
+- CSV DATA
+In order to produce the labels you need to provide a CSV
+file containing product information in a specific format:
+-- CSV format
+   Column 1: product code
+   Column 2: product description*
+   Column 3: product cost (optional)
+   Column 4: product sell price (including currency symbol eg. $)
+
+   * product description must be of the following format:
+     	     - size/width: width of a plank in following pattern
+	       		   0 or 0-0/0 or 0-0/00 or 0-0/0+0-0/0
+			   (each 0 represnets any integer eg. 4-1/4)
+																		- species: species of wood such as RED-OAK, this is used
+			to filter the data for the labels, if CSV file
+			contains more than one species, this is how the
+			program will know which labels to produce. If
+			more than one word is used, they must be joined
+			by a "-"
+	     - color: used for sorting labels by colour, all of data
+	       	      containing the same species and color will be printed
+		      on the same label
+	     - material: eg. solid or engineered wood. Each label will
+	       		 contain different widhts of the plank together with
+			 corresponding material and its price printed
+			 underneath its title which is the species and color
+			 relative to the plank
+
+   Please see "sampledata.csv" to confirm applicable formats.
+
+- RUNNING THE PROGRAM
+In the command line enviroment, navigate inside
+the directory containing the program and type the following command:
+./makelabels.py sampledata.csv
+      ^              ^
+   program 	  csv file
+
+
+###########
+# LICENSE #
+###########
+
+This project is licensed under the GNU GENERAL PUBLIC LICENSE - see
+the LICENSE.cd file for details.
+
+
+###################
+# ACKNOWLEDGMENTS #
+###################
+
+Some code inspiration and design ideas by Mohammad Issawi
